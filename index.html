@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>James Inah | Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #CE2626;
+            --primary-hover: #a81f1f;
+            --bg-main: #FFFDEB;
+            --bg-section: #E8DBB3;
+            --secondary: #7DAACB;
+            --secondary-hover: #5d8fb3;
+            --text-dark: #2d2d2d;
+            --text-light: #666;
+            --shadow: 0 2px 12px rgba(0,0,0,0.06);
+            --shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+            --content-max: 1040px;
+            --content-pad: clamp(1rem, 4vw, 2rem);
+            --radius-md: 12px;
+            --radius-lg: 14px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            line-height: 1.65;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(255, 253, 235, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(206, 38, 38, 0.1);
+            z-index: 100;
+            padding: 0.95rem 0;
+        }
+
+        .nav-container {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 0 var(--content-pad);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-toggle {
+            display: none;
+            border: 1px solid rgba(206, 38, 38, 0.22);
+            background: var(--bg-main);
+            color: var(--primary);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            padding: 0.45rem 0.68rem;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 0.92rem;
+            font-weight: 500;
+            transition: color 0.2s, background 0.2s;
+            border-radius: 8px;
+            padding: 0.22rem 0.4rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+            background: rgba(206, 38, 38, 0.08);
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--content-max);
+            margin: 0 auto;
+            padding: 0 var(--content-pad);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: clamp(4.5rem, 8vw, 6rem) 0 clamp(3.2rem, 7vw, 5rem);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5.8vw, 3.15rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .hero p {
+            max-width: 720px;
+            margin: 0 auto 2.5rem;
+            color: var(--text-light);
+            font-size: clamp(1rem, 2.3vw, 1.1rem);
+        }
+
+        /* Section Styles */
+        section {
+            padding: clamp(2.8rem, 6vw, 4rem) 0;
+        }
+
+        .section-header {
+            margin-bottom: clamp(1.6rem, 3vw, 2.5rem);
+        }
+
+        .section-header h2 {
+            font-size: clamp(1.45rem, 3vw, 1.9rem);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-light);
+            font-size: 1rem;
+        }
+
+        /* Education Section */
+        .education {
+            background: var(--bg-section);
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+            opacity: 0.3;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid var(--bg-section);
+        }
+
+        .timeline-item h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .institution {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-item .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            background: var(--bg-section);
+            padding: 3.2rem 1.5rem 1.5rem;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow);
+            transition: all 0.2s;
+            border: 1px solid rgba(206, 38, 38, 0.05);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-card h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-dark);
+        }
+
+        .project-card p {
+            font-size: 0.93rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex-grow: 1;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-tag {
+            background: var(--bg-main);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            border: 1px solid rgba(206, 38, 38, 0.15);
+        }
+
+        .project-action-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            border: 0;
+            background: var(--primary);
+            color: white;
+            border-radius: 999px;
+            padding: 0.5rem 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .project-action-btn:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        body.modal-open {
+            overflow: hidden;
+        }
+
+        body.modal-open > *:not(.project-modal-overlay) {
+            filter: blur(6px);
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .project-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(24, 22, 16, 0.35);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s ease;
+            z-index: 999;
+        }
+
+        .project-modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .project-modal {
+            width: min(760px, calc(100% - 1.5rem));
+            background: #fffdf2;
+            border-radius: var(--radius-lg);
+            border: 1px solid rgba(206, 38, 38, 0.15);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.22);
+            max-height: 86vh;
+            overflow-y: auto;
+        }
+
+        .project-modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.2rem 1.2rem 0.4rem;
+        }
+
+        .project-modal-title {
+            font-size: 1.25rem;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+
+        .project-modal-close {
+            border: 0;
+            background: transparent;
+            color: var(--text-light);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            padding: 0.2rem 0.35rem;
+        }
+
+        .project-modal-content {
+            padding: 0.4rem 1.2rem 1.2rem;
+        }
+
+        .project-modal-links {
+            display: flex;
+            gap: 0.65rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .project-modal-link {
+            display: inline-block;
+            background: var(--bg-main);
+            color: var(--primary);
+            border: 1px solid rgba(206, 38, 38, 0.25);
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: 0.42rem 0.68rem;
+            font-size: 0.85rem;
+        }
+
+        .project-modal-subtitle {
+            color: var(--primary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin: 0.85rem 0 0.35rem;
+            font-weight: 700;
+        }
+
+        .project-modal-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .project-modal-tech-tag {
+            background: var(--bg-main);
+            color: var(--text-dark);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 0.28rem 0.62rem;
+        }
+
+        .project-modal-blurb {
+            color: var(--text-dark);
+            font-size: 0.95rem;
+            line-height: 1.58;
+            margin-top: 0.25rem;
+        }
+
+        /* Skills Section */
+        .skills {
+            background: var(--bg-section);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .skill-category h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.15rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .skill-list {
+            list-style: none;
+            color: var(--text-dark);
+            font-size: 0.92rem;
+            line-height: 1.45;
+        }
+
+        /* Experience Section */
+        .experience-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .experience-item {
+            padding: 1.5rem;
+            background: var(--bg-main);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(0,0,0,0.05);
+            box-shadow: var(--shadow);
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .experience-header h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .experience-header .company {
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .experience-header .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .experience-item p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-section);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        footer h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 48px;
+            height: 48px;
+            background: var(--bg-main);
+            border-radius: 50%;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(206, 38, 38, 0.1);
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .social-links svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .footer-text {
+            color: var(--text-light);
+            font-size: 0.85rem;
+        }
+
+        .resume-link-wrap {
+            margin-bottom: 1.25rem;
+        }
+
+        .resume-link-label {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.45rem;
+        }
+
+        .resume-link {
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+            background: var(--primary);
+            border: 1px solid rgba(206, 38, 38, 0.2);
+            border-radius: 10px;
+            padding: 0.55rem 0.95rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .resume-link:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 0;
+            }
+
+            .nav-container {
+                justify-content: flex-end;
+            }
+
+            .nav-toggle {
+                display: inline-flex;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: calc(100% + 0.6rem);
+                left: var(--content-pad);
+                right: var(--content-pad);
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.35rem;
+                padding: 0.75rem;
+                background: #fffdf0;
+                border: 1px solid rgba(206, 38, 38, 0.18);
+                border-radius: 12px;
+                box-shadow: 0 12px 28px rgba(0, 0, 0, 0.14);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                display: block;
+                padding: 0.55rem 0.7rem;
+                font-size: 0.95rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                text-align: left;
+                padding-top: 4.5rem;
+            }
+
+            .hero p {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                padding: 3rem 1rem 1rem;
+            }
+
+            .project-action-btn {
+                top: 0.72rem;
+                right: 0.72rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                padding-left: 1.35rem;
+            }
+
+            .timeline-item {
+                padding-left: 1rem;
+            }
+
+            .timeline-item::before {
+                left: -1.35rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .project-modal-overlay {
+                padding: 0.72rem;
+            }
+
+            .project-modal {
+                max-height: 90vh;
+                width: 100%;
+            }
+
+            .project-modal-header {
+                padding: 1rem 1rem 0.3rem;
+            }
+
+            .project-modal-content {
+                padding: 0.35rem 1rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-modal-title {
+                font-size: 1.08rem;
+            }
+
+            .tech-tag,
+            .project-modal-tech-tag {
+                font-size: 0.72rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <button type="button" class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="mainNavLinks">Menu</button>
+            <ul class="nav-links" id="mainNavLinks">
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero / About -->
+    <section class="hero" id="about">
+        <div class="container">
+            <h1>Hi, I'm James Inah</h1>
+            <p>Computer Science student based in St. Paul, MN. I build practical software with Python, FastAPI, React, and PostgreSQL, with a strong focus on performance, testing, and clean product experience.</p>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="education" id="education">
+        <div class="container">
+            <div class="section-header">
+                <h2>Education</h2>
+                <p>My academic journey</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h3>B.S. in Computer Science</h3>
+                    <div class="institution">University of Minnesota, College of Science and Engineering</div>
+                    <div class="date">Enrolling Fall 2026 • Minneapolis, MN</div>
+                    <p>Incoming computer science student.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Transfer Coursework in Computer Science</h3>
+                    <div class="institution">Century College</div>
+                    <div class="date">Aug 2025 — Present • White Bear Lake, MN</div>
+                    <p>GPA: 3.84/4.0. Coursework includes Discrete Structures, Database Management Systems, OOP, C++, and Python.</p>
+                </div>
+                <div class="timeline-item">
+                    <h3>Introduction to Modern AI (10-202)</h3>
+                    <div class="institution">Carnegie Mellon University (Open Learning)</div>
+                    <div class="date">Jan 2026 — Present • Remote</div>
+                    <p>Implemented a minimal LLM from scratch with custom tokenization, self-attention, and fine-tuning in PyTorch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2>Projects</h2>
+                <p>Things I've built</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <button type="button" class="project-action-btn" data-project="parkgo">Click me</button>
+                    <h3>Park&amp;Go</h3>
+                    <p>Built a full-stack parking platform with ranked results, real-time navigation overlay, and optimized database performance. Reduced parking search time from 15 minutes to 3.5 minutes.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <button type="button" class="project-action-btn" data-project="s2s">Click me</button>
+                    <h3>Text Summarization, Seq2Seq Model</h3>
+                    <p>Developed a Luong-attention Seq2Seq architecture using stacked LSTMs trained on 500k+ Amazon food reviews, reaching 90% summarization accuracy.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">PyTorch</span>
+                        <span class="tech-tag">NLTK</span>
+                        <span class="tech-tag">NumPy</span>
+                        <span class="tech-tag">scikit-learn</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <button type="button" class="project-action-btn" data-project="imusi">Click me</button>
+                    <h3>Imusi</h3>
+                    <p>A self-hosted music streaming platform with a FastAPI backend and React Native mobile app. Streams personal libraries, supports Spotify playlist import, and offers full playback controls.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">PostgreSQL</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Skills</h2>
+                <p>Technologies I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Languages</h3>
+                    <ul class="skill-list">
+                        <li>Python, Java, C++, JavaScript, TypeScript, SQL, HTML/CSS</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Frameworks &amp; Tools</h3>
+                    <ul class="skill-list">
+                        <li>FastAPI, React, PyTorch, SQLAlchemy, MapLibre GL, Tailwind CSS, Docker, Git</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Databases</h3>
+                    <ul class="skill-list">
+                        <li>PostgreSQL, MySQL</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Certification</h3>
+                    <ul class="skill-list">
+                        <li>Supervised Machine Learning: Regression &amp; Classification (DeepLearning.AI)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experience</h2>
+                <p>Involvement and impact</p>
+            </div>
+            <div class="experience-list">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3>ColorStack Member</h3>
+                            <div class="company">ColorStack</div>
+                        </div>
+                        <div class="date">Jan 2026 — Present</div>
+                    </div>
+                    <p>Engage with a national community of 10,000+ Black and Latinx CS students and collaborate on resume reviews, interview prep, and internship referral pipelines.</p>
+                </div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <h3>Unemployeed currently being a student!</h3>
+                            <div class="company">Current Status</div>
+                        </div>
+                        <div class="date">Present</div>
+                    </div>
+                    <p>I am focused on learning computer science deeply, improving my problem-solving skills, and consistently building coding projects to strengthen my real-world development experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>Let's connect</h3>
+            <div class="social-links">
+                <a href="https://github.com/Troppy2" target="_blank" aria-label="GitHub">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                </a>
+                <a href="https://linkedin.com/in/inah-james" target="_blank" aria-label="LinkedIn">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                </a>
+                <a href="mailto:jamesinah34@gmail.com" aria-label="Email">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M0 3v18h24v-18h-24zm21.518 2l-9.518 7.713-9.518-7.713h19.036zm-19.518 14v-11.817l10 8.104 10-8.104v11.817h-20z"/>
+                    </svg>
+                </a>
+            </div>
+            <div class="resume-link-wrap">
+                <p class="resume-link-label">Resume</p>
+                <a class="resume-link" href="JamesInah_Resume.pdf" target="_blank" rel="noopener">View Resume</a>
+            </div>
+            <p class="footer-text">The One Piece is real</p>
+        </div>
+    </footer>
+
+    <div class="project-modal-overlay" id="projectModalOverlay" aria-hidden="true">
+        <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+            <div class="project-modal-header">
+                <h3 class="project-modal-title" id="projectModalTitle">Project Details</h3>
+                <button type="button" class="project-modal-close" id="closeProjectModal" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="project-modal-content">
+                <div class="project-modal-links">
+                    <a id="projectGithubLink" class="project-modal-link" href="#" target="_blank" rel="noopener" hidden>GitHub Link</a>
+                    <a id="projectLiveLink" class="project-modal-link" href="#" target="_blank" rel="noopener" hidden>Live Project</a>
+                </div>
+
+                <h4 class="project-modal-subtitle">Tech Stack</h4>
+                <div class="project-modal-tech" id="projectModalTech"></div>
+
+                <h4 class="project-modal-subtitle">What I Did</h4>
+                <p class="project-modal-blurb" id="projectModalBlurb"></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const projectDetails = {
+            parkgo: {
+                title: 'Park&Go',
+                github: 'https://github.com/Troppy2/parkandgo-v2',
+                live: 'https://parkango.netlify.app/',
+                tech: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'SQLAlchemy', 'Docker', 'MapLibre GL'],
+                blurb: 'I built Park&Go as a full-stack platform to solve the pain of finding parking quickly. I implemented a FastAPI backend with JWT auth, async SQLAlchemy models, and migrations, then built a React and TypeScript frontend that ranks parking options by distance, cost, and user preferences. I integrated real-time navigation behavior, tuned query performance for larger datasets, and validated core user flows with end-to-end and integration tests to keep the app reliable as features expanded.'
+            },
+            s2s: {
+                title: 'Text Summarization, Seq2Seq Model',
+                github: 'https://github.com/Troppy2/text-summarization',
+                live: null,
+                tech: ['Python', 'PyTorch', 'LSTM', 'Luong Attention', 'NLTK', 'NumPy', 'scikit-learn'],
+                blurb: 'I designed and trained a sequence-to-sequence summarization model using a stacked LSTM encoder-decoder with Luong attention over a large review dataset. I built preprocessing from scratch, including cleaning, token processing, vocabulary construction, and vectorization. I experimented with sequence lengths and training configuration to improve summary quality, then evaluated outputs for coherence and information retention to reach strong summarization performance on held-out samples.'
+            },
+            imusi: {
+                title: 'Imusi',
+                github: 'https://github.com/Troppy2/Imusi',
+                live: null,
+                tech: ['FastAPI', 'SQLAlchemy 2.0', 'SQLite/PostgreSQL', 'React Native', 'Expo', 'TypeScript', 'NativeWind', 'Zustand', 'JWT Auth'],
+                blurb: 'Imusi is a self-hosted music streaming app that I architected with a FastAPI backend and a React Native mobile client. The backend supports library ingestion from local folders, metadata handling, playlist management, search, stream endpoints, and auth flows with JWT and optional Google OAuth. On mobile, I focused on smooth playback UX, queue control, recently played tracking, and Spotify playlist import workflows. I also structured the project so it can run locally for development and scale to a production deployment with PostgreSQL and cloud build pipelines.'
+            }
+        };
+
+        const modalOverlay = document.getElementById('projectModalOverlay');
+        const modalTitle = document.getElementById('projectModalTitle');
+        const modalGithubLink = document.getElementById('projectGithubLink');
+        const modalLiveLink = document.getElementById('projectLiveLink');
+        const modalTech = document.getElementById('projectModalTech');
+        const modalBlurb = document.getElementById('projectModalBlurb');
+        const closeProjectModalBtn = document.getElementById('closeProjectModal');
+        const navToggle = document.getElementById('navToggle');
+        const mainNavLinks = document.getElementById('mainNavLinks');
+
+        function openProjectModal(projectKey) {
+            const details = projectDetails[projectKey];
+            if (!details) {
+                return;
+            }
+
+            modalTitle.textContent = details.title;
+            modalBlurb.textContent = details.blurb;
+            modalTech.innerHTML = details.tech
+                .map((item) => `<span class="project-modal-tech-tag">${item}</span>`)
+                .join('');
+
+            if (details.github) {
+                modalGithubLink.href = details.github;
+                modalGithubLink.hidden = false;
+            } else {
+                modalGithubLink.hidden = true;
+            }
+
+            if (details.live) {
+                modalLiveLink.href = details.live;
+                modalLiveLink.hidden = false;
+            } else {
+                modalLiveLink.hidden = true;
+            }
+
+            modalOverlay.classList.add('active');
+            modalOverlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('modal-open');
+        }
+
+        function closeProjectModal() {
+            modalOverlay.classList.remove('active');
+            modalOverlay.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('modal-open');
+        }
+
+        document.querySelectorAll('.project-action-btn').forEach((btn) => {
+            btn.addEventListener('click', () => {
+                openProjectModal(btn.dataset.project);
+            });
+        });
+
+        closeProjectModalBtn.addEventListener('click', closeProjectModal);
+
+        modalOverlay.addEventListener('click', (event) => {
+            if (event.target === modalOverlay) {
+                closeProjectModal();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
+                closeProjectModal();
+            }
+        });
+
+        if (navToggle && mainNavLinks) {
+            navToggle.addEventListener('click', () => {
+                const isOpen = mainNavLinks.classList.toggle('open');
+                navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            });
+
+            mainNavLinks.querySelectorAll('a').forEach((link) => {
+                link.addEventListener('click', () => {
+                    mainNavLinks.classList.remove('open');
+                    navToggle.setAttribute('aria-expanded', 'false');
+                });
+            });
+        }
+    </script>
+
+</body>
+</html>
