@@ -264,7 +264,7 @@
         }
 
         .project-action-btn {
-            align-self: flex-end;
+            align-self: flex-start;
             margin-bottom: 0.85rem;
             border: 0;
             background: var(--primary);
@@ -788,7 +788,7 @@
                 <div class="project-card">
                     <button type="button" class="project-action-btn" data-project="parkgo">Click me</button>
                     <h3>Park&amp;Go</h3>
-                    <p>Built a full-stack parking platform with ranked results, real-time navigation overlay, and optimized database performance. Reduced parking search time from 15 minutes to 3.5 minutes.</p>
+                    <p>A full-stack parking platform built to help UMN students find affordable spots after parking contracts filled up. The system ranks available parking by distance, price, and user preferences so the search process stays efficient.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">FastAPI</span>
@@ -955,7 +955,7 @@
                 github: 'https://github.com/Troppy2/parkandgo-v2',
                 live: 'https://parkango.netlify.app/',
                 tech: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'SQLAlchemy', 'Docker', 'MapLibre GL'],
-                blurb: 'I built Park&Go as a full-stack platform to solve the pain of finding parking quickly. I implemented a FastAPI backend with JWT auth, async SQLAlchemy models, and migrations, then built a React and TypeScript frontend that ranks parking options by distance, cost, and user preferences. I integrated real-time navigation behavior, tuned query performance for larger datasets, and validated core user flows with end-to-end and integration tests to keep the app reliable as features expanded.'
+                blurb: 'I built Park&Go to solve a specific UMN parking problem: once parking contracts were gone, finding affordable parking became difficult and inconsistent. The app ranks parking by distance, price, and user preferences, so students can narrow the search space quickly. On the implementation side, I built the FastAPI backend, React and TypeScript frontend, database models, and navigation flow, then optimized the request and query path so the search experience stayed fast under real usage.'
             },
             s2s: {
                 title: 'Text Summarization, Seq2Seq Model',
