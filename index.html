@@ -105,8 +105,8 @@
 
         /* Hero Section */
         .hero {
-            padding: clamp(4.5rem, 8vw, 6rem) 0 clamp(3.2rem, 7vw, 5rem);
-            text-align: center;
+            padding: clamp(4.5rem, 8vw, 6rem) 0 1.3rem;
+            text-align: left;
         }
 
         .hero h1 {
@@ -114,11 +114,24 @@
             font-weight: 700;
             margin-bottom: 1rem;
             letter-spacing: -0.02em;
+            min-height: 1.2em;
+        }
+
+        .typing-cursor {
+            display: inline-block;
+            margin-left: 0.15em;
+            color: var(--primary);
+            animation: cursor-blink 1s steps(2, end) infinite;
+        }
+
+        @keyframes cursor-blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
         }
 
         .hero p {
             max-width: 720px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 1.4rem;
             color: var(--text-light);
             font-size: clamp(1rem, 2.3vw, 1.1rem);
         }
@@ -126,6 +139,28 @@
         /* Section Styles */
         section {
             padding: clamp(2.8rem, 6vw, 4rem) 0;
+        }
+
+        .working-on {
+            padding-top: 0.25rem;
+            padding-bottom: 1.25rem;
+        }
+
+        .working-on .section-header {
+            margin-bottom: 0.85rem;
+        }
+
+        .working-on .experience-item {
+            padding: 1rem 1.15rem;
+            background: var(--bg-main);
+            border-left: 3px solid var(--primary);
+            box-shadow: none;
+            border-radius: 10px;
+        }
+
+        .working-on .experience-item p {
+            font-size: 0.93rem;
+            line-height: 1.55;
         }
 
         .section-header {
@@ -205,6 +240,21 @@
         .timeline-item p {
             color: var(--text-light);
             font-size: 0.9rem;
+        }
+
+        .education-label {
+            display: block;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 0.45rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .education-coursework {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-top: 0.1rem;
         }
 
         /* Projects Section */
@@ -357,6 +407,12 @@
             gap: 0.65rem;
             flex-wrap: wrap;
             margin-bottom: 1rem;
+        }
+
+        .project-modal-status {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 0.9rem;
         }
 
         .project-modal-link {
@@ -742,8 +798,20 @@
     <!-- Hero / About -->
     <section class="hero" id="about">
         <div class="container">
-            <h1>Hi, I'm James Inah</h1>
-            <p>Computer Science student based in St. Paul, MN. I build practical software with Python, FastAPI, React, and PostgreSQL, with a strong focus on performance, testing, and clean product experience.</p>
+            <h1><span id="typingName" aria-label="Hi, I'm Inah James"></span><span class="typing-cursor" aria-hidden="true">|</span></h1>
+        </div>
+    </section>
+
+    <!-- Currently Working On -->
+    <section class="working-on">
+        <div class="container">
+            <div class="section-header">
+                <h2>Currently Working On</h2>
+                <p>What I am building and learning right now</p>
+            </div>
+            <div class="experience-item">
+                <p>I am actively expanding Park&amp;Go with new features and refinements, while also preparing for Allocore as a future project by building a stronger machine learning foundation. Right now, I am focused on improving system design, feature development, and the skills I will need to apply ML effectively in upcoming work.</p>
+            </div>
         </div>
     </section>
 
@@ -765,7 +833,9 @@
                     <h3>Transfer Coursework in Computer Science</h3>
                     <div class="institution">Century College</div>
                     <div class="date">Aug 2025 — Present • White Bear Lake, MN</div>
-                    <p>GPA: 3.84/4.0. Coursework includes Discrete Structures, Database Management Systems, OOP, C++, and Python.</p>
+                    <p>GPA: 3.84/4.0</p>
+                    <span class="education-label">Coursework</span>
+                    <p class="education-coursework">Discrete Structures, Database Management Systems, OOP, C++, and Python.</p>
                 </div>
                 <div class="timeline-item">
                     <h3>Introduction to Modern AI (10-202)</h3>
@@ -788,7 +858,7 @@
                 <div class="project-card">
                     <button type="button" class="project-action-btn" data-project="parkgo">Click me</button>
                     <h3>Park&amp;Go</h3>
-                    <p>A full-stack parking platform built to help UMN students find affordable spots after parking contracts filled up. The system ranks available parking by distance, price, and user preferences so the search process stays efficient.</p>
+                    <p>A context-aware parking recommendation system for UMN students that ranks lots by cost, travel time, preferences, and live campus conditions through a layered data, prediction, and recommendation pipeline.</p>
                     <div class="tech-stack">
                         <span class="tech-tag">Python</span>
                         <span class="tech-tag">FastAPI</span>
@@ -796,6 +866,19 @@
                         <span class="tech-tag">TypeScript</span>
                         <span class="tech-tag">PostgreSQL</span>
                         <span class="tech-tag">Docker</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <button type="button" class="project-action-btn" data-project="imusi">Click me</button>
+                    <h3>Imusi</h3>
+                    <p>A self-hosted music streaming platform with a FastAPI backend and React Native mobile app. Streams personal libraries, supports Spotify playlist import, and offers full playback controls.</p>
+                    <div class="tech-stack">
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Expo</span>
+                        <span class="tech-tag">TypeScript</span>
+                        <span class="tech-tag">SQLAlchemy</span>
+                        <span class="tech-tag">PostgreSQL</span>
                     </div>
                 </div>
                 <div class="project-card">
@@ -811,16 +894,15 @@
                     </div>
                 </div>
                 <div class="project-card">
-                    <button type="button" class="project-action-btn" data-project="imusi">Click me</button>
-                    <h3>Imusi</h3>
-                    <p>A self-hosted music streaming platform with a FastAPI backend and React Native mobile app. Streams personal libraries, supports Spotify playlist import, and offers full playback controls.</p>
+                    <button type="button" class="project-action-btn" data-project="allocore">Click me</button>
+                    <h3>Allocore</h3>
+                    <p>A planned Windows-first predictive resource scheduler that monitors per-process CPU and RAM usage, forecasts spikes, and uses reversible actions to reduce contention before it hits the system.</p>
                     <div class="tech-stack">
-                        <span class="tech-tag">FastAPI</span>
-                        <span class="tech-tag">React Native</span>
-                        <span class="tech-tag">Expo</span>
-                        <span class="tech-tag">TypeScript</span>
-                        <span class="tech-tag">SQLAlchemy</span>
-                        <span class="tech-tag">PostgreSQL</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">psutil</span>
+                        <span class="tech-tag">SQLite</span>
+                        <span class="tech-tag">Windows API</span>
+                        <span class="tech-tag">ARIMA</span>
                     </div>
                 </div>
             </div>
@@ -938,6 +1020,7 @@
                     <a id="projectGithubLink" class="project-modal-link" href="#" target="_blank" rel="noopener" hidden>GitHub Link</a>
                     <a id="projectLiveLink" class="project-modal-link" href="#" target="_blank" rel="noopener" hidden>Live Project</a>
                 </div>
+                <p class="project-modal-status" id="projectModalStatus"></p>
 
                 <h4 class="project-modal-subtitle">Tech Stack</h4>
                 <div class="project-modal-tech" id="projectModalTech"></div>
@@ -955,7 +1038,7 @@
                 github: 'https://github.com/Troppy2/parkandgo-v2',
                 live: 'https://parkango.netlify.app/',
                 tech: ['Python', 'FastAPI', 'React', 'TypeScript', 'PostgreSQL', 'SQLAlchemy', 'Docker', 'MapLibre GL'],
-                blurb: 'I built Park&Go to solve a specific UMN parking problem: once parking contracts were gone, finding affordable parking became difficult and inconsistent. The app ranks parking by distance, price, and user preferences, so students can narrow the search space quickly. On the implementation side, I built the FastAPI backend, React and TypeScript frontend, database models, and navigation flow, then optimized the request and query path so the search experience stayed fast under real usage.'
+                blurb: 'Park&Go is a layered parking recommendation system for UMN students. The current V2.5 direction moves beyond a static heuristic by combining data aggregation, a recommendation engine, a predictive context layer, and a natural-language assistant so the app can respond to weather, event timing, crowd density, and user preferences. I built the FastAPI backend, React and TypeScript frontend, database models, and navigation flow, then designed the scoring and context pipeline so parking recommendations stay practical under real campus conditions.'
             },
             s2s: {
                 title: 'Text Summarization, Seq2Seq Model',
@@ -970,6 +1053,13 @@
                 live: null,
                 tech: ['FastAPI', 'SQLAlchemy 2.0', 'SQLite/PostgreSQL', 'React Native', 'Expo', 'TypeScript', 'NativeWind', 'Zustand', 'JWT Auth'],
                 blurb: 'Imusi is a self-hosted music streaming app that I architected with a FastAPI backend and a React Native mobile client. The backend supports library ingestion from local folders, metadata handling, playlist management, search, stream endpoints, and auth flows with JWT and optional Google OAuth. On mobile, I focused on smooth playback UX, queue control, recently played tracking, and Spotify playlist import workflows. I also structured the project so it can run locally for development and scale to a production deployment with PostgreSQL and cloud build pipelines.'
+            },
+            allocore: {
+                title: 'Allocore',
+                github: null,
+                live: null,
+                tech: ['Python', 'psutil', 'SQLite', 'Windows API', 'NumPy', 'ARIMA', 'pytest', 'Rich'],
+                blurb: 'Allocore is a planned Windows-first predictive resource scheduler that will monitor per-process CPU and RAM usage, forecast memory spikes, and take reversible actions before the system becomes constrained. The project is built around a measurable claim: predict spikes ahead of time, act safely with logging and rollback, and evaluate the outcome against an observe-only baseline. I am treating it as a systems and machine learning project with a monitoring daemon, prediction layer, action engine, safety controls, and benchmark pipeline so the work can be validated with actual numbers.'
             }
         };
 
@@ -977,6 +1067,7 @@
         const modalTitle = document.getElementById('projectModalTitle');
         const modalGithubLink = document.getElementById('projectGithubLink');
         const modalLiveLink = document.getElementById('projectLiveLink');
+        const modalStatus = document.getElementById('projectModalStatus');
         const modalTech = document.getElementById('projectModalTech');
         const modalBlurb = document.getElementById('projectModalBlurb');
         const closeProjectModalBtn = document.getElementById('closeProjectModal');
@@ -1009,6 +1100,15 @@
                 modalLiveLink.hidden = true;
             }
 
+            const missingLinks = [];
+            if (!details.github) {
+                missingLinks.push('GitHub coming soon');
+            }
+            if (!details.live) {
+                missingLinks.push('Live project coming soon');
+            }
+            modalStatus.textContent = missingLinks.length ? missingLinks.join(' • ') : '';
+
             modalOverlay.classList.add('active');
             modalOverlay.setAttribute('aria-hidden', 'false');
             document.body.classList.add('modal-open');
@@ -1037,6 +1137,30 @@
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
                 closeProjectModal();
+            }
+        });
+
+        const typingName = document.getElementById('typingName');
+        const heroNameText = "Hi, I'm Inah James";
+        let heroNameIndex = 0;
+
+        function typeHeroName() {
+            if (!typingName) {
+                return;
+            }
+
+            typingName.textContent = heroNameText.slice(0, heroNameIndex + 1);
+            heroNameIndex += 1;
+
+            if (heroNameIndex < heroNameText.length) {
+                window.setTimeout(typeHeroName, 85);
+            }
+        }
+
+        window.addEventListener('load', () => {
+            if (typingName) {
+                typingName.textContent = '';
+                window.setTimeout(typeHeroName, 250);
             }
         });
 
